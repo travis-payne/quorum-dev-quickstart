@@ -1,7 +1,7 @@
 [
   {
-    "name": "bootnode",
-    "rpcUrl": "http://bootnode:8545",
+    "name": "validator1",
+    "rpcUrl": "http://validator1:8545",
     "transactionManagerUrl": ""
   },
   {

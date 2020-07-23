@@ -18,8 +18,8 @@ x-besu-bootnode-def:
       --genesis-file=/config/genesis.json \
       --node-private-key-file=/opt/besu/keys/key \
       --min-gas-price=0 \
-      --rpc-http-api=EEA,WEB3,ETH,NET,{% if privacy %}PRIV,{% endif %}PERM,${BESU_CONS_API:-IBFT} \
-      --rpc-ws-api=EEA,WEB3,ETH,NET,{% if privacy %}PRIV,{% endif %}PERM,${BESU_CONS_API:-IBFT} ;
+      --rpc-http-api=EEA,WEB3,ETH,NET,ADMIN,TXPOOL,DEBUG,{% if privacy %}PRIV,{% endif %}PERM,${BESU_CONS_API:-IBFT} \
+      --rpc-ws-api=EEA,WEB3,ETH,NET,ADMIN,TXPOOL,DEBUG,{% if privacy %}PRIV,{% endif %}PERM,${BESU_CONS_API:-IBFT} ;
 
 x-besu-def:
   &besu-def
@@ -38,8 +38,8 @@ x-besu-def:
       --genesis-file=/config/genesis.json \
       --node-private-key-file=/opt/besu/keys/key \
       --min-gas-price=0 \
-      --rpc-http-api=EEA,WEB3,ETH,NET,{% if privacy %}PRIV,{% endif %}PERM,${BESU_CONS_API:-IBFT} \
-      --rpc-ws-api=EEA,WEB3,ETH,NET,{% if privacy %}PRIV,{% endif %}PERM,${BESU_CONS_API:-IBFT} ;
+      --rpc-http-api=EEA,WEB3,ETH,NET,ADMIN,TXPOOL,DEBUG,{% if privacy %}PRIV,{% endif %}PERM,${BESU_CONS_API:-IBFT} \
+      --rpc-ws-api=EEA,WEB3,ETH,NET,ADMIN,TXPOOL,DEBUG,{% if privacy %}PRIV,{% endif %}PERM,${BESU_CONS_API:-IBFT} ;
 
 {% if privacy %}
 x-orion-def:
@@ -64,6 +64,34 @@ x-ethsignerProxy-def:
   ]
   ports:
     - 8545
+
+
+x-cakeshop-def:
+  &cakeshop-def
+  image: quorumengineering/cakeshop:0.11.0
+  expose:
+    - 8999
+  restart: "no"
+  healthcheck:
+    test: ["CMD", "wget", "--spider", "--proxy=off", "http://localhost:8999/actuator/health"]
+    interval: 5s
+    timeout: 5s
+    retries: 20
+    start_period: 5s
+  entrypoint:
+    - /bin/sh
+    - -c
+    - |
+      rm -rf /data/cakeshop/local
+      mkdir -p /data/cakeshop/local
+      cp /quorum/application.properties /data/cakeshop/local/application.properties
+{% if privacy %}
+      cp /quorum/8nodes_besu_docker.json /data/cakeshop/local/seednodes.json
+{% else %}
+      cp /quorum/5nodes_besu_docker.json /data/cakeshop/local/seednodes.json
+{% endif %}
+      java -Xms128M -Xmx128M -Dcakeshop.config.dir=/data/cakeshop -Dlogging.path=/data/logs/cakeshop -jar /opt/cakeshop/cakeshop.war
+      ;;
 
 services:
 
@@ -185,8 +213,8 @@ services:
       "--config-file=/config/config.toml",
       "--genesis-file=/config/genesis.json",
       "--node-private-key-file=/opt/besu/keys/key",
-      "--rpc-http-api=EEA,WEB3,ETH,NET,PRIV,PERM,${BESU_CONS_API:-ibft}",
-      "--rpc-ws-api=EEA,WEB3,ETH,NET,PRIV,PERM,${BESU_CONS_API:-ibft}",
+      "--rpc-http-api=EEA,WEB3,ETH,NET,PRIV,PERM,ADMIN,TXPOOL,DEBUG,${BESU_CONS_API:-ibft}",
+      "--rpc-ws-api=EEA,WEB3,ETH,NET,PRIV,PERM,ADMIN,TXPOOL,DEBUG,${BESU_CONS_API:-ibft}",
       "--min-gas-price=0",
       "--privacy-enabled",
       "--privacy-url=http://member1orion:8888",
@@ -233,8 +261,8 @@ services:
       "--config-file=/config/config.toml",
       "--genesis-file=/config/genesis.json",
       "--node-private-key-file=/opt/besu/keys/key",
-      "--rpc-http-api=EEA,WEB3,ETH,NET,PRIV,PERM,${BESU_CONS_API:-ibft}",
-      "--rpc-ws-api=EEA,WEB3,ETH,NET,PRIV,PERM,${BESU_CONS_API:-ibft}",
+      "--rpc-http-api=EEA,WEB3,ETH,NET,PRIV,PERM,ADMIN,TXPOOL,DEBUG,${BESU_CONS_API:-ibft}",
+      "--rpc-ws-api=EEA,WEB3,ETH,NET,PRIV,PERM,ADMIN,TXPOOL,DEBUG,${BESU_CONS_API:-ibft}",
       "--min-gas-price=0",
       "--privacy-enabled",
       "--privacy-url=http://member2orion:8888",
@@ -281,8 +309,8 @@ services:
       "--config-file=/config/config.toml",
       "--genesis-file=/config/genesis.json",
       "--node-private-key-file=/opt/besu/keys/key",
-      "--rpc-http-api=EEA,WEB3,ETH,NET,PRIV,PERM,${BESU_CONS_API:-ibft}",
-      "--rpc-ws-api=EEA,WEB3,ETH,NET,PRIV,PERM,${BESU_CONS_API:-ibft}",
+      "--rpc-http-api=EEA,WEB3,ETH,NET,PRIV,PERM,ADMIN,TXPOOL,DEBUG,${BESU_CONS_API:-ibft}",
+      "--rpc-ws-api=EEA,WEB3,ETH,NET,PRIV,PERM,ADMIN,TXPOOL,DEBUG,${BESU_CONS_API:-ibft}",
       "--min-gas-price=0",
       "--privacy-enabled",
       "--privacy-url=http://member3orion:8888",
@@ -344,6 +372,18 @@ services:
     networks:
       quorum-dev-quickstart:
         ipv4_address: 172.16.239.33
+
+  cakeshop:
+    << : *cakeshop-def
+    hostname: cakeshop
+    ports:
+      - "8999:8999"
+    volumes:
+      - cakeshop:/data
+      - ./config/cakeshop:/quorum
+    networks:
+      quorum-dev-quickstart:
+        ipv4_address: 172.16.239.34
 
 volumes:
   public-keys:

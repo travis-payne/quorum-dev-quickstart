@@ -50,3 +50,65 @@ docker-compose -f docker-compose-orchestrate.yml up -d
 - fix list.sh
 - fix images & readme
 - add monitoring for go
+
+
+[INFO ] 2020-07-23 10:24:10.082 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:12.092 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:12.095 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:13.972 [MessageBroker-5] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:14.099 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:14.104 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:14.411 [MessageBroker-2] GethHttpServiceImpl - Geth call: admin_nodeInfo
+[INFO ] 2020-07-23 10:24:14.416 [MessageBroker-2] GethHttpServiceImpl - Geth call: eth_mining
+[INFO ] 2020-07-23 10:24:14.422 [MessageBroker-2] GethHttpServiceImpl - Geth call: net_peerCount
+[INFO ] 2020-07-23 10:24:14.427 [MessageBroker-2] GethHttpServiceImpl - Geth call: eth_blockNumber
+[INFO ] 2020-07-23 10:24:14.431 [MessageBroker-2] GethHttpServiceImpl - Geth call: txpool_status
+[INFO ] 2020-07-23 10:24:14.435 [MessageBroker-2] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:16.108 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:16.112 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:18.116 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:18.124 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:18.983 [MessageBroker-2] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:19.440 [MessageBroker-6] GethHttpServiceImpl - Geth call: admin_nodeInfo
+[INFO ] 2020-07-23 10:24:19.443 [MessageBroker-6] GethHttpServiceImpl - Geth call: eth_mining
+[INFO ] 2020-07-23 10:24:19.447 [MessageBroker-6] GethHttpServiceImpl - Geth call: net_peerCount
+[INFO ] 2020-07-23 10:24:19.450 [MessageBroker-6] GethHttpServiceImpl - Geth call: eth_blockNumber
+[INFO ] 2020-07-23 10:24:19.454 [MessageBroker-6] GethHttpServiceImpl - Geth call: txpool_status
+[INFO ] 2020-07-23 10:24:19.462 [MessageBroker-6] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:20.133 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:20.142 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:22.152 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:22.156 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:23.992 [MessageBroker-3] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:24.160 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:24.168 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:24.467 [MessageBroker-1] GethHttpServiceImpl - Geth call: admin_nodeInfo
+[INFO ] 2020-07-23 10:24:24.471 [MessageBroker-1] GethHttpServiceImpl - Geth call: eth_mining
+[INFO ] 2020-07-23 10:24:24.475 [MessageBroker-1] GethHttpServiceImpl - Geth call: net_peerCount
+[INFO ] 2020-07-23 10:24:24.479 [MessageBroker-1] GethHttpServiceImpl - Geth call: eth_blockNumber
+[INFO ] 2020-07-23 10:24:24.483 [MessageBroker-1] GethHttpServiceImpl - Geth call: txpool_status
+[INFO ] 2020-07-23 10:24:24.487 [MessageBroker-1] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:26.176 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:26.180 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:28.184 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:28.192 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:29.012 [MessageBroker-4] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:29.492 [MessageBroker-2] GethHttpServiceImpl - Geth call: admin_nodeInfo
+[INFO ] 2020-07-23 10:24:29.497 [MessageBroker-2] GethHttpServiceImpl - Geth call: eth_mining
+[INFO ] 2020-07-23 10:24:29.502 [MessageBroker-2] GethHttpServiceImpl - Geth call: net_peerCount
+[INFO ] 2020-07-23 10:24:29.505 [MessageBroker-2] GethHttpServiceImpl - Geth call: eth_blockNumber
+[INFO ] 2020-07-23 10:24:29.509 [MessageBroker-2] GethHttpServiceImpl - Geth call: txpool_status
+[INFO ] 2020-07-23 10:24:29.512 [MessageBroker-2] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:30.199 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:30.207 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:32.216 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:32.220 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:34.018 [MessageBroker-5] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:34.223 [BlockScanner-44] GethHttpServiceImpl - Geth call: admin_peers
+[INFO ] 2020-07-23 10:24:34.232 [BlockScanner-44] GethHttpServiceImpl - Geth call: eth_getBlockByNumber
+[INFO ] 2020-07-23 10:24:34.517 [MessageBroker-2] GethHttpServiceImpl - Geth call: admin_nodeInfo
+[INFO ] 2020-07-23 10:24:34.525 [MessageBroker-2] GethHttpServiceImpl - Geth call: eth_mining
+[INFO ] 2020-07-23 10:24:34.531 [MessageBroker-2] GethHttpServiceImpl - Geth call: net_peerCount
+
+
+geth.rpcapi.list=admin,eth,debug,net,personal,web3
