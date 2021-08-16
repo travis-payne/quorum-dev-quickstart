@@ -65,8 +65,10 @@ The overall architecture diagrams to visually show components of the blockchain 
 This is the simplest of the networks available and will spin up a blockchain network comprising 4 validators, 1 RPC 
 node which has an [EthSinger](http://docs.ethsigner.consensys.net/) proxy container linked to it so you can optionally sign transactions. To view the progress 
 of the network, the Alethio block explorer can be used and is available on `http://localhost:25000`. 
-Hyperledger Besu based Quorum also deploys metrics monitoring via Prometheus available on `http://localhost:9090`, 
-paired with Grafana with custom dashboards available on `http://localhost:3000`. 
+Hyperledger Besu based Quorum also deploys monitoring solutions.
+You can choose to make metrics monitoring via Prometheus available on `http://localhost:9090`, 
+paired with Grafana with custom dashboards available on `http://localhost:3000`.
+You can also use Splunk to see all logs, traces and metrics available at `http://localhost:8000` (with the credentials admin/quickstart).
 
 Essentially you get everything in the architecture diagram above, bar the yellow privacy block
 
@@ -81,9 +83,11 @@ Use cases:
 This network is slightly more advanced than the former and you get everything from the POA network above and a few 
 Ethereum clients each paired with [Tessera](https://docs.tessera.consensys.net/en/latest/) for its Private Transaction Mananger.
 
-As before, to view the progress of the network, the Alethio block explorer can be used and is available on `http://localhost:25000`. 
-Hyperledger Besu based Quorum also deploys metrics monitoring via Prometheus available on `http://localhost:9090`, 
-paired with Grafana with custom dashboards available on `http://localhost:3000`. 
+As before, to view the progress of the network, the Alethio block explorer can be used and is available on `http://localhost:25000`.
+Hyperledger Besu based Quorum also deploys monitoring solutions.
+You can choose to make metrics monitoring via Prometheus available on `http://localhost:9090`,
+paired with Grafana with custom dashboards available on `http://localhost:3000`.
+You can also use Splunk to see all logs, traces and metrics available at `http://localhost:8000` (with the credentials admin/quickstart).
 
 Essentially you get everything in the architecture diagram above.
 
@@ -135,7 +139,7 @@ For the private transaction:
 ```
 cd smart_contracts
 npm install
-node scripts/deploy.js
+node scripts/private_tx.js
 ```
 which deploys the contract and sends an arbitrary value (47) from `Member1` to `Member3`. Once done, it queries all three members (tessera)
 to check the value at an address, and you should observe that only `Member1` & `Member3` have this information as they were involved in the transaction 
