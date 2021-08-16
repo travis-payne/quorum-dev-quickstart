@@ -20,9 +20,9 @@ maxRetryCount=50
 HOST=${DOCKER_PORT_2375_TCP_ADDR:-"localhost"}
 
 # Displays links to exposed services
-echo "${bold}*************************************"
+echo "*************************************"
 echo "Quorum Dev Quickstart "
-echo "*************************************${normal}"
+echo "*************************************"
 
 elk_setup=true
 if [ -z `docker-compose -f docker-compose.yml ps -q kibana 2>/dev/null` ] ; then
