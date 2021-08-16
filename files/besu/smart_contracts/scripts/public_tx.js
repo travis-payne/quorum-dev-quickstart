@@ -3,7 +3,6 @@ const fs = require('fs-extra');
 const Tx = require('ethereumjs-tx');
 const Web3 = require('web3');
 
-
 // member1 details
 const { tessera, besu } = require("./keys.js");
 const host = besu.ethsignerProxy.url;
@@ -66,13 +65,14 @@ async function createContract(host, contractBin, contractInit) {
 };
 
 async function main(){
+  let newValue = 123;
   createContract(host, contractBin, contractConstructorInit)
   .then(async function(tx){
     console.log("Contract deployed at address: " + tx.contractAddress);
     console.log("Use the smart contracts 'get' function to read the contract's constructor initialized value .. " )
     await getValueAtAddress(host, contractAbi, tx.contractAddress);
-    console.log("Use the smart contracts 'set' function to update that value to 123 .. " );
-    await setValueAtAddress(host, accountAddress, 123, contractAbi, tx.contractAddress );
+    console.log(`Use the smart contracts 'set' function to update that value to ${newValue} ...` );
+    await setValueAtAddress(host, accountAddress, newValue, contractAbi, tx.contractAddress );
     console.log("Verify the updated value that was set .. " )
     await getValueAtAddress(host, contractAbi, tx.contractAddress);
   })
